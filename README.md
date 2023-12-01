@@ -1,6 +1,6 @@
 # Hidden Gems
 
-Hidden Gems is a web application designed to help users analyze and forecast data relationships. It provides a user-friendly interface for uploading data, selecting columns, analyzing the data, and forecasting future values.
+Hidden Gems is a web application designed to help users analyze and forecast data relationships by using AutoML and dynamic class generation to permit arbitrary data input. It provides a user-friendly interface for uploading data, selecting columns, analyzing the data, and forecasting future values.
 
 ## Getting Started
 
