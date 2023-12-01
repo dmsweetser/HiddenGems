@@ -1,0 +1,272 @@
+﻿@page
+@model HiddenGems.Pages.IndexModel
+@{
+	<script type="text/javascript">
+		if (!window.hg) {
+			window.hg = new Object();
+			window.hg.slideIndex = 0;
+			window.hg.slideIntervalId = 0;
+		}
+		$(document).ready(function() {
+			window.hg.isLicenseValid = '@LicenseManager.IsLicenseValid()';
+			window.hg.jobWasCancelled = false;
+			if (window.document.documentMode) {
+				document.getElementById("getStartedIE").style.display = '';
+			} else {
+				document.getElementById("getStartedNotIE").style.display = '';
+			}
+		});
+	</script>
+	<div class="workflow-parent">
+		<div id="welcome" style="display:none;" class="workflow-step container animate__animated animate__fadeInRight">
+			<div class="row d-flex justify-content-center">
+				<div class="logo-container">
+					<img src="~/HiddenGemsLogo.png" class="hg-logo" />
+				</div>
+				<div class="title-container">
+					<h1 class="hg-title">Hidden Gems</h1>
+					@if (LicenseManager.IsDemoMode())
+					{
+						<h2 class="hg-tag">Online Edition <span class="version">v.@(System.Reflection.Assembly.GetEntryAssembly().GetName().Version)</span></h2>
+					}
+					else
+					{
+						<h2 class="hg-tag">Local Edition <span class="version">v.@(System.Reflection.Assembly.GetEntryAssembly().GetName().Version)</span></h2>
+					}
+					@if (!LicenseManager.IsDemoMode() && !LicenseManager.IsCurrentVersion())
+					{
+						@if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Windows))
+						{
+							<a class="update-tag" href="https://fiveloavestwofish.blob.core.windows.net/hiddengems/windows/HiddenGems.exe" target="_blank">Update Available</a>
+						}
+						else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.Linux))
+						{
+							<a class="update-tag" href="https://fiveloavestwofish.blob.core.windows.net/hiddengems/linux/HiddenGems" target="_blank">Update Available</a>
+						}
+						else if (System.Runtime.InteropServices.RuntimeInformation.IsOSPlatform(System.Runtime.InteropServices.OSPlatform.OSX))
+						{
+							<a class="update-tag" href="https://fiveloavestwofish.blob.core.windows.net/hiddengems/osx/HiddenGems" target="_blank">Update Available</a>
+						}
+					}
+				</div>
+			</div>
+			<hr />
+			<div class="row d-flex justify-content-center text-center introContent">
+				<button class="introNavButton introLeftButton" onclick="SwitchIntro(-1)">&#10094;</button>
+				<button class="introNavButton introRightButton" onclick="SwitchIntro(+1)">&#10095;</button>
+				<a class="verseLink introItem" href="https://chataboutjesus.com/" target="_blank">It is the glory of God<br />to conceal a matter;<br />To search out a matter<br />is the glory of kings.</a>
+				<img class="introItem" src="./images/HiddenGemsIntro - 1.svg" />
+				<img class="introItem" src="./images/HiddenGemsIntro - 2.svg" />
+				<img class="introItem" src="./images/HiddenGemsIntro - 3.svg" />
+				<img class="introItem" src="./images/HiddenGemsIntro - 4.svg" />
+				<img class="introItem" src="./images/HiddenGemsIntro - 5.svg" />
+			</div>
+
+			<div class="row d-flex justify-content-center text-center">
+				<span class="explanation">Hidden Gems helps you see what matters most in your data, and then lets you use those relationships to forecast future values.<span style="font-size:1.2rem;"> It&lsquo;s your own personal analytics department.</span> Learn more <a href="https://youtube.com/playlist?list=PLDTdw-is0uR6wq260ghCQnPf90N9RELoj" target="_blank">here</a>.</span>
+			</div>
+		</div>
+		<div class="row welcome" style="display:none;">
+			@if (!LicenseManager.IsDemoMode() && !LicenseManager.IsLicenseValid())
+			{
+				<button class="navigationButton nextButton btn btn-secondary" onclick="Navigate(event, 'welcome', 'activate')">Activate</button>
+			}
+			else if (LicenseManager.IsDemoMode())
+			{
+				<button class="navigationButton previousButton btn btn-secondary" onclick="Buy()">Buy Local Edition</button>
+				<button id="getStartedNotIE" class="navigationButton nextButton btn btn-secondary" onclick="Navigate(event, 'welcome', 'upload')">Get Started</button>
+			}
+			else
+			{
+				<button id="getStartedNotIE" class="navigationButton nextButton btn btn-secondary" style="display:none;" onclick="Navigate(event, 'welcome', 'upload')">Get Started</button>
+				<button id="getStartedIE" class="navigationButton nextButton btn btn-secondary" style="display:none; font-size:1rem;" disabled="disabled">Internet Explorer is not supported.<br />Please open Hidden Gems in Edge.</button>
+			}
+		</div>
+
+
+		@if (!LicenseManager.IsDemoMode() && !LicenseManager.IsLicenseValid())
+		{
+
+
+			<div id="activate" style="display:none;" class="workflow-step animate__animated animate__fadeInRight">
+				<div class="text-center">
+					<h2 class="activation-helper">Activate</h2>
+				</div>
+				<h4 class="activation-tag">Please enter the activation code you recieved in your email receipt:</h4>
+				<br />
+				<div class="form-group">
+					<input id="activationCode" type="text" required="required" class="activationCodeInput" />&nbsp;
+					<button id="submitActivationCode" class="activation-button btn btn-secondary" onclick="Activate()">Activate</button>
+				</div>
+				<h4 class="activation-tag">If you no longer have the email receipt,<br />enter your email here to have it resent to you:</h4>
+				<br />
+				<div class="form-group">
+					<input id="emailAddress" type="text" class="activationCodeInput" />&nbsp;
+					<button id="submitEmail" class="activation-button btn btn-secondary" onclick="ResendEmail()">Resend Email</button>
+					<br />
+					<br />
+					<span id="submitEmailMessage" class="text-success" style="display: none;">Activation code resent successfully!</span>
+				</div>
+			</div>
+			<div class="row activate" style="display:none;">
+				<button class="navigationButton previousButton btn btn-secondary" onclick="Navigate(event, 'activate', 'welcome')">Go Back</button>
+			</div>
+
+
+		}
+		else
+		{
+
+
+			<div id="upload" style="display:none;" class="workflow-step container animate__animated animate__fadeInRight">
+				<div class="text-center">
+					<h2 class="upload-helper">Where is your data?</h2>
+				</div>
+				<ul class="nav nav-tabs d-flex justify-content-center upload-options">
+					<li class="nav-item upload-tab" role="presentation">
+						<button id="localFileButton" href="#localfile" class="upload-link" data-toggle="tab">Local File</button>
+					</li>
+					<li class="nav-item upload-tab" role="presentation">
+						<button id="onlineButton" href="#online" class="upload-link" data-toggle="tab">Online</button>
+					</li>
+				</ul>
+				<div class="tab-content shadow upload-input-section">
+					<div class="tab-pane" id="localfile">
+						<div class="form-group">
+							<label id="localFileLabel" for="localFileUpload">Please choose a CSV/TSV file from your computer:</label>
+							<input id="localFileUpload" type="file" class="form-control upload-input-file" placeholder="">
+							<ul class="requirement-list">
+								<li class="requirement">First row should have column names</li>
+								<li class="requirement">Only rows with numbers can be analyzed</li>
+								@if (LicenseManager.IsDemoMode())
+								{
+									<li class="requirement text-danger">In Online Edition, only the first @SharedSettings.DemoModeRowLimit rows will be analyzed</li>
+								}
+								<li class="requirement">Are you worried about what happens to your data? View our <a href="./Privacy.html" target="_blank">privacy policy</a>.</li>
+							</ul>
+						</div>
+					</div>
+					<div class="tab-pane" id="online">
+						<div class="form-group">
+							<label id="onlineLabel" for="localFileUpload">Please enter the URL of an online spreadsheet:</label>
+							<input id="onlineUpload" type="url" class="form-control upload-input-online" placeholder="Example: http://www.google.com/TestFile.csv">
+							<ul class="requirement-list">
+								<li class="requirement">First row should have column names</li>
+								<li class="requirement">Only rows with numbers can be analyzed</li>
+								<li class="requirement">You can use the share link of a public GOOGLE SHEETS spreadsheet (<a href="https://support.google.com/drive/answer/2494822?co=GENIE.Platform%3DDesktop&hl=en#zippy=%2Cshare-a-file-publicly" target="_blank">Learn More</a>)</li>
+								<li class="requirement">You can also use the URL of a CSV/TSV file that is available online</li>
+								@if (LicenseManager.IsDemoMode())
+								{
+									<li class="requirement text-danger">In Online Edition, only the first @SharedSettings.DemoModeRowLimit rows will be analyzed</li>
+								}
+								<li class="requirement">Are you worried about what happens to your data? View our <a href="./Privacy.html" target="_blank">privacy policy</a>.</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="text-center">
+					<h4 class="upload-helper or">OR</h4>
+				</div>
+				<div class="text-center">
+					<a id="sampleLink" class="sampleLink" href="#">Try with sample file</a> <strong>|</strong>
+					<a id="sampleLinkView" class="sampleLink" target="_blank" href="https://fiveloavestwofish.blob.core.windows.net/hiddengems/IsItOrIsntIt.csv">View sample file</a>
+				</div>
+			</div>
+			<div class="row upload" style="display:none;">
+				<button class="navigationButton previousButton btn btn-secondary" onclick="Navigate(event, 'upload', 'welcome')">Go Back</button>
+				<button id="uploadNext" class="navigationButton nextButton btn btn-secondary" style="display:none;" onclick="UploadData()">Select Columns</button>
+			</div>
+
+
+			<div id="pick" style="display:none;" class="workflow-step animate__animated animate__fadeInRight">
+				<h2 class="pick-helper">What column do you want to analyze?</h2>
+				<div id="pickButtonGroup" class="btn-group" role="group">
+				</div>
+			</div>
+			<div class="row pick" style="display:none;">
+				<button class="navigationButton previousButton btn btn-secondary" onclick="ResetJob('pick')">Go Back</button>
+				<button id="pickNext" class="navigationButton nextButton btn btn-secondary" style="display:none;" onclick="BeginAnalysis()">Start Digging!</button>
+			</div>
+
+
+			<div id="check" style="display:none;" class="workflow-step animate__animated animate__fadeInRight">
+				<div id="currentStatus">Waiting for status...</div>
+				<div class="progress">
+					<div id="progressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+				</div>
+			</div>
+			<div class="row check" style="display:none;">
+				<button class="navigationButton previousButton btn btn-secondary" onclick="ResetJob('check')">Cancel</button>
+			</div>
+
+
+			<div id="result" style="display:none;" class="workflow-step animate__animated animate__fadeInRight">
+				<h2 class="result-helper"></h2>
+				<h4 class="result-tag">Bigger and clearer words mattered more...</h4>
+				<div id="resultCollection">
+				</div>
+				<div style="display:none;" id="rawResult">
+				</div>
+				<hr />
+				<button class="toggleResult btn-secondary" id="toggleResult" onclick="OpenDetailedResult()">Show Detailed Result</button>
+				<br />
+			</div>
+			<div class="row result" style="display:none;">
+				<button class="navigationButton previousButton btn btn-secondary" onclick="ResetJob('result')">Start Over</button>
+				<button id="resultNext" class="navigationButton nextButton btn btn-secondary" style="display:none;" onclick="Navigate(event, 'result', 'forecast')">Start Forecasting!</button>
+			</div>
+
+
+			<div id="forecast" style="display:none;" class="workflow-step animate__animated animate__fadeInRight">
+				<h2 class="forecast-helper">Forecasting</h2>
+				<h4 class="forecast-tag"></h4>
+				<div id="forecast-inputs">
+				</div>
+				<div id="forecast-output">
+				</div>
+				<br />
+				@if (LicenseManager.IsDemoMode())
+				{
+					<div class="text-center buy-area">
+						<h4 class="buy-helper">Like the result? Please buy Local Edition!<br /> It lets you run on your own computer (Windows / Linux / Mac),<br />and there is no imposed row limit.</h4>
+					</div>
+				}
+			</div>
+			<div class="row forecast" style="display:none;">
+				<button class="navigationButton previousButton btn btn-secondary" onclick="Navigate(event, 'forecast', 'result')">Go Back</button>
+				@if (LicenseManager.IsDemoMode())
+				{
+					<button class="navigationButton nextButton btn btn-secondary" onclick="Buy()">Buy Local Edition</button>
+				}
+			</div>
+		}
+
+		<div id="error" style="display:none;" class="workflow-step animate__animated animate__fadeInRight">
+			<h2 class="error-helper">Uh-oh! Hidden Gems encountered an error:</h2>
+			<div class="error-area text-danger">
+				<span id="error-text"></span>
+			</div>
+			<div class="text-center help-area">
+				<h4 class="help-helper">Feel free to contact us at <a href="mailto:support@hiddengemsml.com" target="_blank">support@hiddengemsml.com</a> for additional support.</h4>
+			</div>
+		</div>
+		<div class="row error" style="display:none;">
+			<button class="navigationButton previousButton btn btn-secondary" onclick="ResetJob('error')">Start Over</button>
+		</div>
+
+
+		<footer class="border-top footer text-muted">
+			<div class="text-center">
+				<strong>
+					<span class="footer-line">Copyright &copy; @(DateTime.Now.Year) Daniel Sweetser</span>
+					| <span class="footer-line"><a href="mailto:support@hiddengemsml.com" target="_blank">Contact Us</a></span>
+					| <span class="footer-line">
+						Find Us On <a href="https://www.facebook.com/hiddenGemsMachineLearning" target="_blank">Facebook</a>
+						/ <a href="https://www.linkedin.com/company/hidden-gems-machine-learning" target="_blank">LinkedIn</a>
+					</span>
+				</strong>
+			</div>
+			<br />
+		</footer>
+	</div>
+}

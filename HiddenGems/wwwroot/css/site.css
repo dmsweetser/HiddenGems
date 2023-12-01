@@ -1,0 +1,549 @@
+﻿/*Layout*/
+@media (min-width: 1046px) {
+  html {
+    font-size: 1.2vw;
+  }
+  .introNavButton {
+    width: 2vw;
+    line-height: 20vh;
+  }
+}
+@media (min-width: 550px) and (max-width: 1045px) {
+  html {
+    font-size: 2vw;
+  }
+  .hg-logo {
+    display: none;
+  }
+  .title-container {
+    width: 100% !important;
+    text-align: center;
+  }
+  .introNavButton {
+    width: 2.5vw;
+    line-height: 15vh;
+  }
+}
+@media (max-width: 549px) {
+  html {
+    font-size: 3vw;
+  }
+  .logo-container {
+    width: 0 !important;
+  }
+  .hg-logo {
+    display: none;
+  }
+  .title-container {
+    width: 100% !important;
+    text-align: center;
+  }
+  .container {
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+  }
+  .introNavButton {
+    width: 5vw;
+    line-height: 15vh;
+  }
+}
+html {
+  background: white;
+  height: 100vh;
+  overflow: hidden;
+}
+body {
+  background: transparent;
+  height: 80vh;
+  font-family: 'Courier New', monospace;
+  overflow: hidden;
+}
+footer {
+  background: transparent;
+}
+.btn-secondary {
+  line-height: 3vh;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  border: 0px solid lightgray !important;
+  background: rgba(55, 150, 218, 0.2);
+}
+.btn-secondary:hover {
+  color: black;
+  border: 0px solid #23689a !important;
+  background: rgba(55, 150, 218, 0.65);
+  line-height: 3vh;
+}
+.workflow-parent {
+  min-height: 72vh;
+  max-height: 72vh;
+  display: flex;
+  align-items: center;
+  width: 95vw;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+  overflow-y: auto !important;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 95vw !important;
+  margin-left: 2.5vw;
+  margin-right: 2.5vw;
+}
+.navigationButton {
+  position: absolute;
+  width: 38vw;
+  height: 8vh;
+  bottom: 11vh;
+  font-size: 1.5rem;
+  font-weight: bolder;
+}
+.nextButton {
+  right: 5vw;
+  border-radius: 40px;
+}
+.previousButton {
+  left: 5vw;
+  border-radius: 40px;
+}
+.footer {
+  position: absolute;
+  width: 100vw;
+  bottom: 1vh;
+  left: 0;
+  height: 8vh;
+}
+.footer-line {
+  display: inline-block;
+  font-weight: bolder;
+}
+.footer-line a {
+  color: #23689a;
+  font-weight: bolder;
+}
+.get-attention {
+  animation: glow 2s 1;
+}
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 5px -5px rgba(55, 150, 218, 0.65);
+  }
+  50% {
+    box-shadow: 0 0 5px 5px rgba(55, 150, 218, 0.65);
+  }
+  100% {
+    box-shadow: 0 0 5px -5px rgba(55, 150, 218, 0.65);
+  }
+}
+/*Welcome*/
+#welcome .logo-container {
+  float: left;
+  width: 35%;
+  margin-right: 2%;
+}
+#welcome .hg-logo {
+  float: right;
+  height: 5rem;
+  margin-top: 2vh;
+  border-radius: 1rem;
+}
+#welcome .title-container {
+  float: left;
+  width: 60%;
+  margin-left: 2%;
+}
+#welcome .hg-title {
+  float: left;
+  font-size: 3rem;
+  line-height: 6vh;
+  padding-top: 2vh;
+  font-weight: 500;
+  width: 100%;
+}
+#welcome .hg-tag {
+  float: left;
+  font-size: 1.5rem;
+  font-style: italic;
+  font-weight: 400;
+  width: 100%;
+}
+#welcome .version {
+  font-size: 0.8rem !important;
+  font-style: normal;
+}
+#welcome .update-tag {
+  float: left;
+  font-size: 1.2rem;
+  width: 100%;
+  line-height: 1.8rem;
+}
+#welcome .introContent {
+  height: 35vh;
+  margin-bottom: 2vh;
+}
+#welcome .introItem {
+  height: 100%;
+  transform: translate(0, -20px);
+  display: none;
+}
+#welcome .introNavButton {
+  text-align: center;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  border: 0px solid lightgray !important;
+  background: rgba(55, 150, 218, 0.2);
+  opacity: 0.7;
+}
+#welcome .introNavButton:hover {
+  outline: none;
+}
+#welcome .introNavButton:focus {
+  outline: none;
+}
+#welcome .introNavButton:active {
+  outline: none;
+}
+#welcome .introLeftButton {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(0%, -50%);
+}
+#welcome .introRightButton {
+  position: absolute;
+  top: 50%;
+  right: 0%;
+  transform: translate(0%, -50%);
+}
+#welcome .verseLink {
+  font-size: 1.2rem;
+  margin: 5vh 10vw 5vh 10vw;
+  text-decoration: none;
+  font-style: italic;
+  font-weight: 500;
+  color: black;
+  padding-top: 3vh;
+  line-height: 2rem;
+}
+#welcome .verseLink:hover {
+  text-decoration: none;
+  font-style: italic;
+  color: black;
+}
+#welcome .explanation {
+  font-size: 1rem;
+  margin: 0vh 5vw 0vh 5vw;
+  font-weight: bold;
+}
+/*Activate*/
+#activate {
+  text-align: center;
+  width: 100vw;
+}
+#activate .activation-helper {
+  font-weight: bold;
+}
+#activate .activation-tag {
+  font-weight: 500;
+  font-size: 1.2rem;
+  width: 75vw;
+  margin: auto;
+}
+#activate .activationCodeInput {
+  line-height: 3.2vh;
+  height: 6vh;
+  font-weight: bold;
+  font-size: 1.2rem;
+  width: 50vw;
+}
+#activate .activation-button {
+  width: 25vw;
+  height: 7vh;
+  border-radius: 20px;
+  font-size: 1.3rem;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  border: 0px solid lightgray;
+  background: rgba(55, 150, 218, 0.2);
+}
+#activate #submitEmailMessage {
+  font-weight: bolder;
+  font-size: 1.2rem;
+  width: 75vw;
+  margin: auto;
+}
+/*Upload*/
+#upload .upload-helper {
+  font-weight: bold;
+}
+#upload .upload-options {
+  padding-bottom: 1vh;
+}
+#upload .upload-tab {
+  height: 10vh;
+}
+#upload .upload-link {
+  width: 22vw;
+  height: 10vh;
+  border-radius: 20px;
+  margin-bottom: 6vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  font-size: 1.3rem;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  border: 0px solid lightgray;
+  background: rgba(55, 150, 218, 0.2);
+}
+#upload .upload-link:focus {
+  outline: none;
+  box-shadow: none;
+  border-radius: 20px;
+  border: 0px solid #23689a;
+  background: rgba(55, 150, 218, 0.65);
+}
+#upload .upload-link-active {
+  outline: none;
+  box-shadow: none;
+  border-radius: 20px;
+  border: 0px solid #23689a;
+  background: rgba(55, 150, 218, 0.65);
+}
+#upload .upload-input-section {
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 2vh;
+  width: auto;
+  border-radius: 20px;
+  background: white;
+}
+#upload .upload-input-file {
+  line-height: 3.2vh;
+  height: 6vh;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+#upload .upload-input-online {
+  line-height: 3.2vh;
+  height: 4vh;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+#upload .requirement {
+  font-size: 0.95rem;
+}
+#upload .or {
+  margin-top: 1rem;
+  margin-bottom: -1rem;
+}
+#upload .sampleLink {
+  padding-top: 20px;
+  font-size: 1.1rem;
+  line-height: 4rem;
+  font-weight: bold;
+  color: #23689a;
+}
+/* Check */
+#check {
+  width: 95vw;
+  text-align: center;
+}
+#check #currentStatus {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#check .progress {
+  border-radius: 20px;
+  border: 4px solid #e8e8e8;
+  background: white !important;
+  height: 5vh;
+}
+#check .progress-bar {
+  background: #23689a !important;
+}
+/* Pick */
+#pick {
+  width: 95vw;
+  text-align: center;
+}
+#pick .pick-helper {
+  font-weight: bold;
+}
+#pick #pickButtonGroup {
+  width: 90vw;
+  background: transparent !important;
+  display: inline-block !important;
+  padding-top: 5vh;
+  margin: auto;
+  overflow-y: auto;
+  min-height: 30vh;
+  max-height: 30vh;
+}
+#pick .pickButton {
+  line-height: 3.2vh;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bolder;
+  color: black;
+  border: 0px solid lightgray;
+  background: rgba(55, 150, 218, 0.2);
+  border-radius: 15px;
+  margin: 5px;
+  padding: 5px;
+}
+#pick .pickButton:hover,
+#pick .selectedColumn {
+  color: black;
+  border: 0px solid #23689a;
+  background: rgba(55, 150, 218, 0.65);
+}
+#pick .pickButton:focus {
+  box-shadow: none !important;
+}
+/* Result */
+#result {
+  width: 95vw;
+  text-align: center;
+}
+#result .result-helper {
+  padding-top: 5vh;
+  font-weight: bold;
+}
+#result .result-tag {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+#result #resultCollection {
+  padding-top: 1vh;
+  width: 95vw;
+  margin: auto;
+  overflow-y: auto;
+  min-height: 30vh;
+  max-height: 30vh;
+}
+#result #resultCollection .individualResult {
+  display: inline-block !important;
+  width: 100%;
+}
+#result #rawResult {
+  padding-top: 1vh;
+  width: 95vw;
+  margin: auto;
+  overflow-y: auto;
+  min-height: 30vh;
+  max-height: 30vh;
+}
+#result .toggleResult {
+  opacity: 0.6;
+  border-radius: 10px !important;
+  border-color: transparent !important;
+  padding: 5px 15px 5px 15px;
+  margin-top: 15px;
+}
+#result .toggleResult:focus {
+  outline: none;
+}
+/* Forecast */
+#forecast {
+  width: 95vw;
+  text-align: center;
+}
+#forecast .forecast-helper {
+  padding-top: 5vh;
+  font-weight: bold;
+}
+#forecast .forecast-tag {
+  font-weight: 500;
+  font-size: 1.2rem;
+}
+#forecast #forecast-inputs {
+  padding-top: 1vh;
+  width: 95vw;
+  margin: auto;
+  overflow-y: auto;
+  min-height: 30vh;
+  max-height: 30vh;
+}
+#forecast #forecast-inputs .individualInput {
+  display: inline-block !important;
+  width: 100%;
+}
+#forecast #forecast-inputs .individualInput .individualInputLabel {
+  float: left;
+  margin-right: 1%;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  line-height: 2.3rem;
+  width: 49%;
+  margin-left: auto;
+}
+#forecast #forecast-inputs .individualInput .individualInputField {
+  float: left;
+  width: 49%;
+}
+#forecast #forecast-output {
+  padding-top: 1vh;
+  width: 95vw;
+  margin: auto;
+}
+#forecast #forecast-output .output {
+  display: inline-block !important;
+  width: 100%;
+}
+#forecast #forecast-output .output .outputLabel {
+  float: left;
+  margin-right: 1%;
+  font-weight: bolder;
+  font-size: 1.2rem;
+  line-height: 2.3rem;
+  width: 49%;
+  margin-left: auto;
+}
+#forecast #forecast-output .output .outputField {
+  float: left;
+  width: 49%;
+  font-weight: bolder;
+  background-color: white;
+}
+@media (min-height: 451px) {
+  #forecast .buy-area .buy-helper {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}
+@media (max-height: 450px) {
+  #forecast .buy-area .buy-helper {
+    display: none;
+  }
+}
+/* Error */
+#error {
+  width: 95vw;
+  text-align: center;
+}
+#error .error-helper {
+  font-weight: bold;
+}
+#error .error-area {
+  padding-top: 10vh;
+  width: 80vw;
+  margin: auto;
+  overflow-wrap: break-word;
+}
+#error .error-area #error-text {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+#error .help-area .help-helper {
+  margin-top: 4rem;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  font-size: 1.2rem;
+}

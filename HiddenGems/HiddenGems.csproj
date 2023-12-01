@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+		<UserSecretsId>bc9a06b8-2e1e-427f-a86e-ab2ff9f83458</UserSecretsId>
+		<SignAssembly>false</SignAssembly>
+		<AssemblyVersion>3.0.0.9</AssemblyVersion>
+		<AssemblyOriginatorKeyFile>HiddenGems.pfx</AssemblyOriginatorKeyFile>
+		<ApplicationIcon>wwwroot\HiddenGems_Latest.ico</ApplicationIcon>
+		<OutputType>Exe</OutputType>
+		<AssemblyName>HiddenGems</AssemblyName>
+		<GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<Authors>Daniel Sweetser</Authors>
+		<Company>Five Loaves Two Fish Software</Company>
+		<Product>Hidden Gems</Product>
+		<Copyright>2022</Copyright>
+		<Version>3.0.0.9</Version>
+		<RuntimeIdentifiers>win-x64;linux-x64;osx-x64</RuntimeIdentifiers>
+		<SatelliteResourceLanguages>en</SatelliteResourceLanguages>
+		<Configurations>Debug;Release;Release-Linux;Release-OSX</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Compile Remove="Helpers\**" />
+		<Content Remove="Helpers\**" />
+		<EmbeddedResource Remove="Helpers\**" />
+		<None Remove="Helpers\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <_WebToolingArtifacts Remove="Properties\PublishProfiles\LocalFilePublish-Windows.pubxml" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Include="app.manifest">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="compilerconfig.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="CsvHelper" Version="27.1.1" />
+		<PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="5.0.8" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Common" Version="3.10.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="3.10.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Scripting" Version="3.10.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.CSharp.Workspaces" Version="3.10.0" />
+		<PackageReference Include="Microsoft.CodeAnalysis.Workspaces.Common" Version="3.10.0" />
+		<PackageReference Include="Microsoft.ML.AutoML" Version="0.17.5" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+		<PackageReference Include="Serilog.Extensions.Logging.File" Version="2.0.0" />
+		<PackageReference Include="System.ValueTuple" Version="4.5.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\HiddenGems.Runtime\HiddenGems.Runtime.csproj" />
+	</ItemGroup>
+
+	
+	<ItemGroup>
+		<Content Update="wwwroot\**" ExcludeFromSingleFile="false">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+		<Content Update="appsettings.json" ExcludeFromSingleFile="false">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
+	
+	<ItemGroup>
+	  <Folder Include="Properties\ServiceDependencies\" />
+	</ItemGroup>
+
+</Project>

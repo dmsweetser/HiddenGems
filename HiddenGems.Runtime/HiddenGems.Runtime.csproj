@@ -1,0 +1,10 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyOriginatorKeyFile>HiddenGems.pfx</AssemblyOriginatorKeyFile>
+    <Configurations>Debug;Release;Release-Linux;Release-OSX</Configurations>
+  </PropertyGroup>
+
+</Project>
