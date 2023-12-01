@@ -32,7 +32,3 @@ The application workflow is divided into several steps:
 
 ## License
 This project is licensed under the MIT License. The application is capable of operating in demo and licensed mode, but the license manager has been mocked for the purposes of distributing the application.
-
-## Acknowledgments
-Daniel Sweetser for the development of Hidden Gems.
-
